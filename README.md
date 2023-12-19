@@ -6,10 +6,6 @@
 This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 
-<h2>Video Demonstration</h2>
-
-- ### [YouTube: How to Deploy on-premises Active Directory within Azure Compute](https://www.youtube.com)
-
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
@@ -24,10 +20,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>High-Level Deployment and Configuration Steps</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+- Create a Domain Controller and Client in Azure
+- Ensure Connectivity and Installing Active Directory
+- Create Users and Organizational Units
+- Join Client-1 to the Domain and Remote Desktop Setup
+- User Creation and Login Scenario
 
 <h2>Deployment and Configuration Steps</h2>
 
@@ -35,7 +32,8 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+In this lab, we initiate the setup of an Azure environment, establishing a Domain Controller (DC-1) using Windows Server 2022 and a client machine (Client-1) running Windows 10. The Resource Group and Virtual Network (Vnet) are carefully noted during the Domain Controller VM creation. The Domain Controller's NIC Private IP address is set to static, and the Client-1 VM is configured to use the same Resource Group and Vnet, ensuring both VMs reside in the same Vnet, as validated through Network Watcher.
+
 </p>
 <br />
 
@@ -43,7 +41,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+With the infrastructure in place, the lab proceeds to ensure connectivity between Client-1 and DC-1. A perpetual ping is initiated from Client-1 to DC-1, prompting the configuration of ICMPv4 on the local Windows Firewall of the Domain Controller. After successfully establishing connectivity, the focus shifts to installing Active Directory on DC-1, creating a new forest (e.g., mydomain.com), and promoting it as a domain controller. The subsequent login as "mydomain.com\labuser" sets the stage for Active Directory operations.
+  
 </p>
 <br />
 
@@ -51,6 +50,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Active Directory operations commence with the creation of Organizational Units (OUs) named "_EMPLOYEES" and "_ADMINS." Within these OUs, an employee named "Jane Doe" is created with the username "jane_admin." Jane_admin is strategically added to the "Domain Admins" Security Group. The Remote Desktop connection is then switched to Jane_admin, who becomes the designated admin account for subsequent tasks.
+  
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Client-1 is seamlessly integrated into the domain (mydomain.com), with DNS settings adjusted to the DC's Private IP address. The Remote Desktop setup on Client-1 allows domain users, like Jane_admin, to access it remotely. Organizational restructuring follows with the creation of an additional OU named "_CLIENTS," where Client-1 is moved for improved organization.
+  
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+The final stage involves creating additional users through a PowerShell script. Jane_admin, now on DC-1, executes the script, observing the dynamic creation of accounts. Post-execution, the Active Directory Users and Computers (ADUC) tool is used to verify the presence of newly created accounts in the appropriate OU. A practical touch is added by attempting to log into Client-1 with one of the newly generated accounts, showcasing the successful integration of users into the domain environment.
+
 </p>
 <br />

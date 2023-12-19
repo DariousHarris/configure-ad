@@ -18,15 +18,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 - Windows Server 2022
 - Windows 10 (21H2)
 
-<h2>High-Level Deployment and Configuration Steps</h2>
-
-- Create a Domain Controller and Client in Azure
-- Ensure Connectivity and Installing Active Directory
-- Create Users and Organizational Units
-- Join Client-1 to the Domain and Remote Desktop Setup
-- User Creation and Login Scenario
-
-<h2>Deployment and Configuration Steps</h2>
+<h2> Create a Domain Controller and Client in Azure</h2>
 
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -37,6 +29,7 @@ In this lab, we initiate the setup of an Azure environment, establishing a Domai
 </p>
 <br />
 
+<h2> Ensure Connectivity and Installing Active Directory</h2>
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
@@ -45,6 +38,8 @@ With the infrastructure in place, the lab proceeds to ensure connectivity betwee
   
 </p>
 <br />
+
+<h2>Create Users and Organizational Units</h2>
 
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -55,6 +50,7 @@ Active Directory operations commence with the creation of Organizational Units (
 </p>
 <br />
 
+<h2>Join Client-1 to the Domain and Remote Desktop Setup</h2>
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
@@ -63,6 +59,8 @@ Client-1 is seamlessly integrated into the domain (mydomain.com), with DNS setti
   
 </p>
 <br />
+
+<h2>User Creation and Login Scenario</h2>
 
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>

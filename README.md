@@ -21,7 +21,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h2> Create a Domain Controller and Client in Azure</h2>
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/a/A69Cp9x" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
 In this lab, we initiate the setup of an Azure environment, establishing a Domain Controller (DC-1) using Windows Server 2022 and a client machine (Client-1) running Windows 10. The Resource Group and Virtual Network (Vnet) are carefully noted during the Domain Controller VM creation. The Domain Controller's NIC Private IP address is set to static, and the Client-1 VM is configured to use the same Resource Group and Vnet, ensuring both VMs reside in the same Vnet, as validated through Network Watcher.
